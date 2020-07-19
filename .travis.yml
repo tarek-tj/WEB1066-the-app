@@ -12,7 +12,7 @@ env:
 
 stages:
   -test
-  -deploy
+
 
 jobs:
   include:
