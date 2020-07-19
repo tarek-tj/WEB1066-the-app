@@ -13,7 +13,7 @@ jobs:
       after_success:
         - ./gradlew test
         - ./gradlew jacocoTestReport
-        - find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}';
+      #  - find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}';
 
 #install: "pip install -r requirements.txt"
 
