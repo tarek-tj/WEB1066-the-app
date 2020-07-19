@@ -17,7 +17,7 @@ stages:
 jobs:
   include:
     - stage: test
-      script:
+      after_success:
       #  - ./gradlew test
         - $COVERAGE ./gradlew -p ./monolithic/ui check
         - $COVERAGE ./gradlew -p ./monolithic/service/cart check
