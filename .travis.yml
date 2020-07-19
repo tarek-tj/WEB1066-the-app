@@ -9,7 +9,7 @@ befor_script:
   - ./gradlew clean jar
 env:
   - COVERAGE=0.0
-#  - COVERAGE=0.25
+  - COVERAGE=0.25
 #  - COVERAGE=0.30
 services:
   - docker
