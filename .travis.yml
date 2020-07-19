@@ -39,7 +39,7 @@ deploy:
   script:
     - echo 'WIP'
     - bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\" --password-stdin"
-    - docker push tareh47/WEB1066-the-app
+    - docker push tarek47/web1066-the-app
   DOCKER_LOGIN:
       global:
         secure: bLhRWgKJs/JmdWDbTCOgB+kbPj5GU6MjUCFjZpxKsKExsriGkWj5pf5ILFH0j8vkWKVGZph/ubeNPTHriH4Lhx9LT0jS6J7tXxNBH8CEgQX1pD4SMuxCNmpQNCgaJpFR8v4ioy38hBAOOO1dxZcxRJXJTomsYtPlRa3JpfrKLDjUlLxoeI1SB8P+roJ2pGYMrHMkh9JYm2hmlHJPjG1ukNvgDLnE2/OrBsvDnVHdNXkPG9/prxyhEih9igEI8asuph/Y+PlsZ2qvDomMZjHAv7D/6+WcQyXC4/DA1qOwNlRFheKTpr5i6V4WW7FNnAW5VEZqJQeIKnqXRBrhjFZntiilFSOqHfmb2Ie5GXdnVf0QaI4p9hLWzmXtd5c8zQlGO7b+RcbdREFX6hvcTWbtj19tXFxLaib7rs5u+3v0Fuafzs+uKoVmnXeQ7A9o2se7Yz4P9kdJic88XyecK9cf5RFyNvdZjBAJMNOUHPIXqImCf1iw644MPAUxQ+i2p/D8M0r0EOm+PLdRFJVHNMo5pfTmMBKF+td788gRsqoTFYD3LFDtoyDNgR8v/0nmDyXElb/UsLnY31xrCZI2eSUayI04BisalHO0wGcFQg+pun9jMiMKFdpQQeNIEDSFA3kX/3f6UsB27D/hBzDt1tgaMI/QHoCCQd4kkuqlLFH84to=
