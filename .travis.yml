@@ -5,7 +5,13 @@ before_install:
   - sudo apt-get update && sudo apt-get install jd
 script:
   - ./gradlew clean jar
-  - echo 'testing comming soon'
+jobs:
+  include:
+    - stage: test
+      script: echo 'test is comming soon'
+
+
+
 
 #install: "pip install -r requirements.txt"
 
