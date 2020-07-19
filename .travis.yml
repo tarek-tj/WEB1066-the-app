@@ -7,12 +7,9 @@ befor_script:
   - ./gradlew clean jar
 env:
   - COVERAGE=0.0
-  - COVERAGE=0.15
-  - COVERAGE=0.24
   - COVERAGE=0.25
   - COVERAGE=0.30
-  - COVERAGE=0.22
-  - COVERAGE=0.19
+
 stages:
   -test
   -deploy
