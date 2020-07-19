@@ -18,7 +18,7 @@ jobs:
   include:
     - stage: test
       after_success:
-      #  - ./gradlew test
+
         - $COVERAGE ./gradlew -p ./monolithic/ui check
         - $COVERAGE ./gradlew -p ./monolithic/service/cart check
         - $COVERAGE ./gradlew -p ./monolithic/service/user check
@@ -28,15 +28,12 @@ jobs:
         - $COVERAGE ./gradlew -p ./monolithic/repository/product check
         - $COVERAGE ./gradlew -p ./monolithic/repository/user check
 
-    #  after_success:
-    #    - ./gradlew jacocoTestReport
-    #    - find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}';
+
 
 deploy:
   provider: script
   script: echo 'WIP'
-  #befor_deploy:
-  #  - $COVERAGE ./gradlew test jacocoTestCoverageVerification
+
   on:
     all_branches: true
 
