@@ -55,9 +55,10 @@ deploy:
   before_deploy:
     - ./gradlew -p ./monolithic/ui packageToContainer
 
-  on:
 
+  on:
     all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^(./monolithic/ui)$
 
 
 
