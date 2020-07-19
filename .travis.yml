@@ -3,9 +3,17 @@ language: java
 jdk: openjdk8
 before_install:
   - sudo apt-get update && sudo apt-get install jd
-script:
+befor_script:
   - ./gradlew clean jar
-  - echo 'testing comming soon'
+stages:
+  -test
+jobs:
+  include:
+    - stage: test
+      after_success:
+        - ./gradlew test
+        - ./gradlew jacocoTestReport
+        - find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}';
 
 #install: "pip install -r requirements.txt"
 
