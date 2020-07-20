@@ -60,7 +60,7 @@ deploy:
     docker push $DOCKER_LOGIN/monolithic-shop:latest
   on:
     all_branches: true
-    condition: $BIULD_TARGET == './monolithic/ui'
+    condition: "$BIULD_TARGET == './monolithic/ui'"
 
 
 
