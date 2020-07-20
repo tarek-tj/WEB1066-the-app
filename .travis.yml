@@ -52,16 +52,12 @@ deploy:
   provider: script
 
   before_deploy:
-    - "./gradlew -p ./monolithic/ui packageToContainer ;"
+    - ./gradlew -p ./monolithic/ui packageToContainer
     - chmod +x "./script/deploy.sh"
-    #!/user/bin/env bash;
-    #- set -e
-  script:
 
-    ./script/deploy.sh;
-    bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\" --password-stdin ;";
-    docker tag zutherb/monolithic-shop:latest $DOCKER_LOGIN/monolithic/ui:latest;
-    docker push $DOCKER_LOGIN/monolithic-shop:latest
+  script: ./script/deploy.sh
+
+
   on:
     all_branches: true
    # condition: "$BIULD_TARGET = ./monolithic/ui"
