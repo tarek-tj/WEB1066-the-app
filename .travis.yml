@@ -8,6 +8,7 @@ services:
 before_install:
   - sudo apt-get update && sudo apt-get install jd
 
+
 env:
   matrix:
   - COVERAGE=0.0 BUILD_TARGET=./monolithic/ui
@@ -26,6 +27,7 @@ env:
 
 install:
   - ./gradlew clean jar
+
 stages:
   -test
 
@@ -48,20 +50,22 @@ jobs:
 
 deploy:
   provider: script
-  
+
   before_deploy:
     - ./gradlew -p ./monolithic/ui packageToContainer
     - chmod +x ./script/deploy.sh
     #!/user/bin/env bash;
     #- set -e
   script:
+
     ./script/deploy.sh;
     bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\" --password-stdin ;";
     docker tag zutherb/monolithic-shop:latest $DOCKER_LOGIN/monolithic/ui:latest;
     docker push $DOCKER_LOGIN/monolithic-shop:latest
   on:
     all_branches: true
-    #condition: "$BIULD_TARGET = ./monolithic/ui"
+   # condition: "$BIULD_TARGET = ./monolithic/ui"
+
 
 
 
