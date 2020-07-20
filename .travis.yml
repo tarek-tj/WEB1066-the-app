@@ -10,13 +10,13 @@ before_install:
 
 env:
   matrix:
-  - COVERAGE=0.057 BUILD_TARGET=./monolithic/ui
-  - COVERAGE=0.148 BUILD_TARGET=./monolithic/service/cart
+  - COVERAGE=0.0 BUILD_TARGET=./monolithic/ui
+  - COVERAGE=0.0 BUILD_TARGET=./monolithic/service/cart
   - COVERAGE=0.0 BUILD_TARGET=./monolithic/service/user
-  - COVERAGE=0.36 BUILD_TARGET=./monolithic/repository/order
+  - COVERAGE=0.0 BUILD_TARGET=./monolithic/repository/order
   - COVERAGE=0.0 BUILD_TARGET=./monolithic/repository/cart
-  - COVERAGE=0.124 BUILD_TARGET=./monolithic/repository/product
-  - COVERAGE=0.318 BUILD_TARGET=./monolithic/repository/user
+  - COVERAGE=0.0 BUILD_TARGET=./monolithic/repository/product
+  - COVERAGE=0.3 BUILD_TARGET=./monolithic/repository/user
 
   global:
     - DOCKER_LOGIN=tarek47
