@@ -55,7 +55,7 @@ deploy:
     - ./gradlew -p ./monolithic/ui packageToContainer
     - chmod +x "./script/deploy.sh"
 
-  script: ./script/deploy.sh
+  script: bash "./script/deploy.sh"
 
 
   on:
