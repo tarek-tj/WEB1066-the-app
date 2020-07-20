@@ -10,6 +10,7 @@ install:
 services:
   - docker
 env:
+
   - COVERAGE=0.3
   DOCKER_LOGIN:
     global:
@@ -21,6 +22,7 @@ env:
       secure: KMYsEc02v6GZ8+h5svhtcGy0qF907wMa02FaWEEM9nuTOJpbPSJ5f8KbxaPr1LSPxWpYbiHVv9DMPmmXt+kKJhuKdz4csEmnRnJ5Eny0QruTWfn6Zaxausjby9ix7NeMTa/+PxPrZ7rRWIkAfg7w0sytCwyXgfSoAurQwRKeIybm3n1Epuz2LmJjIVxo+eEpeyOnsM5e0/qLjTMe2yO0f+z2wyssDpgtlVvu5i9goYyBka7LbT0h76CI+iORwrTM9FTkteusC1pndW17aBvFwNxSKyPqJDzuUVJP58vZUQeW9hbzrnklmF8xVAdzVPcFMC5w79c2copGRJMNQ1yS5fLsGeRApHyzjBZWDTw6dFwGghWMmJNV/vt0U0W0ALz0AHLzeD/IuVvlT6zPWAhJxZ3qeZSpTUtzxhLtic+ew2kfeRTzhqZ3XGwucxNm9AhfWliDR2oIV2M/Izucghlki7KS5Qu/2cOLxnc3fCYXwSqp3X7rLzwhklPEtUTlnNkWMZ0ch1bP2EiXg2c6WyI/jrzA53vTlIrmFpXWgvs4VbK6xrtigst6YjJ8pyTbY117tHt6k2k3Cle9BBXb57DzMPEkRqKt9Mxag6f4zUwyVx7lywMyx+OfrJaVbRLMLWTbTi7Czf0wTIkQXq/DWFhj+hXodDC1tJ7SaSsE0/DdJn8=
 #  - COVERAGE=0.25
 #  - COVERAGE=0.30
+
 
 
 stages:
@@ -45,6 +47,7 @@ jobs:
 
 deploy:
   provider: script
+
   script:
     #- docker login --username=$DOCKER_LOGIN --password=$DOCKER_PASSWORD $DOCKER_HOST
 
@@ -52,6 +55,7 @@ deploy:
 
   on:
     all_branches: true
+   # condition: $TRAVIS_BRANCH =~ ^(./monolithic/ui)$
 
 
 
