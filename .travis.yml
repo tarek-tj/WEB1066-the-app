@@ -45,22 +45,21 @@ jobs:
   #      - $COVERAGE ./gradlew -p ./monolithic/repository/cart check
   #      - $COVERAGE ./gradlew -p ./monolithic/repository/product check
   #      - $COVERAGE ./gradlew -p ./monolithic/repository/user check
-
-
+before_deploy:
+  - "./gradlew -p ./monolithic/ui packageToContainer ;"
+  - chmod +x "./script/deploy.sh"
 
 deploy:
   provider: script
 
-  before_deploy:
-    - "./gradlew -p ./monolithic/ui packageToContainer ;"
-    - chmod +x "./script/deploy.sh"
+
 
   script: bash "./script/deploy.sh"
 
 
   on:
 
-    condition: "$BIULD_TARGET = ./monolithic/ui"
+    condition: "$BIULD_TARGET = './monolithic/ui'"
     branch: master
 
 
