@@ -3,27 +3,30 @@ language: java
 jdk:
   - openjdk8
   #- openjdk9
-before_install:
-  - sudo apt-get update && sudo apt-get install jd
-install:
-  - ./gradlew clean jar
 services:
   - docker
+before_install:
+  - sudo apt-get update && sudo apt-get install jd
+
+
 env:
+  matrix:
+  - COVERAGE=0.0 BUILD_TARGET=./monolithic/ui
+  - COVERAGE=0.0 BUILD_TARGET=./monolithic/service/cart
+  - COVERAGE=0.0 BUILD_TARGET=./monolithic/service/user
+  - COVERAGE=0.0 BUILD_TARGET=./monolithic/repository/order
+  - COVERAGE=0.0 BUILD_TARGET=./monolithic/repository/cart
+  - COVERAGE=0.0 BUILD_TARGET=./monolithic/repository/product
+  - COVERAGE=0.3 BUILD_TARGET=./monolithic/repository/user
 
-  - COVERAGE=0.3
-  DOCKER_LOGIN:
-    global:
-      secure: bLhRWgKJs/JmdWDbTCOgB+kbPj5GU6MjUCFjZpxKsKExsriGkWj5pf5ILFH0j8vkWKVGZph/ubeNPTHriH4Lhx9LT0jS6J7tXxNBH8CEgQX1pD4SMuxCNmpQNCgaJpFR8v4ioy38hBAOOO1dxZcxRJXJTomsYtPlRa3JpfrKLDjUlLxoeI1SB8P+roJ2pGYMrHMkh9JYm2hmlHJPjG1ukNvgDLnE2/OrBsvDnVHdNXkPG9/prxyhEih9igEI8asuph/Y+PlsZ2qvDomMZjHAv7D/6+WcQyXC4/DA1qOwNlRFheKTpr5i6V4WW7FNnAW5VEZqJQeIKnqXRBrhjFZntiilFSOqHfmb2Ie5GXdnVf0QaI4p9hLWzmXtd5c8zQlGO7b+RcbdREFX6hvcTWbtj19tXFxLaib7rs5u+3v0Fuafzs+uKoVmnXeQ7A9o2se7Yz4P9kdJic88XyecK9cf5RFyNvdZjBAJMNOUHPIXqImCf1iw644MPAUxQ+i2p/D8M0r0EOm+PLdRFJVHNMo5pfTmMBKF+td788gRsqoTFYD3LFDtoyDNgR8v/0nmDyXElb/UsLnY31xrCZI2eSUayI04BisalHO0wGcFQg+pun9jMiMKFdpQQeNIEDSFA3kX/3f6UsB27D/hBzDt1tgaMI/QHoCCQd4kkuqlLFH84to=
+  global:
+    - DOCKER_LOGIN=tarek47
+    - secure: KMYsEc02v6GZ8+h5svhtcGy0qF907wMa02FaWEEM9nuTOJpbPSJ5f8KbxaPr1LSPxWpYbiHVv9DMPmmXt+kKJhuKdz4csEmnRnJ5Eny0QruTWfn6Zaxausjby9ix7NeMTa/+PxPrZ7rRWIkAfg7w0sytCwyXgfSoAurQwRKeIybm3n1Epuz2LmJjIVxo+eEpeyOnsM5e0/qLjTMe2yO0f+z2wyssDpgtlVvu5i9goYyBka7LbT0h76CI+iORwrTM9FTkteusC1pndW17aBvFwNxSKyPqJDzuUVJP58vZUQeW9hbzrnklmF8xVAdzVPcFMC5w79c2copGRJMNQ1yS5fLsGeRApHyzjBZWDTw6dFwGghWMmJNV/vt0U0W0ALz0AHLzeD/IuVvlT6zPWAhJxZ3qeZSpTUtzxhLtic+ew2kfeRTzhqZ3XGwucxNm9AhfWliDR2oIV2M/Izucghlki7KS5Qu/2cOLxnc3fCYXwSqp3X7rLzwhklPEtUTlnNkWMZ0ch1bP2EiXg2c6WyI/jrzA53vTlIrmFpXWgvs4VbK6xrtigst6YjJ8pyTbY117tHt6k2k3Cle9BBXb57DzMPEkRqKt9Mxag6f4zUwyVx7lywMyx+OfrJaVbRLMLWTbTi7Czf0wTIkQXq/DWFhj+hXodDC1tJ7SaSsE0/DdJn8=
 
 
-  DOCKER_PASSWORD:
-    global:
-      secure: KMYsEc02v6GZ8+h5svhtcGy0qF907wMa02FaWEEM9nuTOJpbPSJ5f8KbxaPr1LSPxWpYbiHVv9DMPmmXt+kKJhuKdz4csEmnRnJ5Eny0QruTWfn6Zaxausjby9ix7NeMTa/+PxPrZ7rRWIkAfg7w0sytCwyXgfSoAurQwRKeIybm3n1Epuz2LmJjIVxo+eEpeyOnsM5e0/qLjTMe2yO0f+z2wyssDpgtlVvu5i9goYyBka7LbT0h76CI+iORwrTM9FTkteusC1pndW17aBvFwNxSKyPqJDzuUVJP58vZUQeW9hbzrnklmF8xVAdzVPcFMC5w79c2copGRJMNQ1yS5fLsGeRApHyzjBZWDTw6dFwGghWMmJNV/vt0U0W0ALz0AHLzeD/IuVvlT6zPWAhJxZ3qeZSpTUtzxhLtic+ew2kfeRTzhqZ3XGwucxNm9AhfWliDR2oIV2M/Izucghlki7KS5Qu/2cOLxnc3fCYXwSqp3X7rLzwhklPEtUTlnNkWMZ0ch1bP2EiXg2c6WyI/jrzA53vTlIrmFpXWgvs4VbK6xrtigst6YjJ8pyTbY117tHt6k2k3Cle9BBXb57DzMPEkRqKt9Mxag6f4zUwyVx7lywMyx+OfrJaVbRLMLWTbTi7Czf0wTIkQXq/DWFhj+hXodDC1tJ7SaSsE0/DdJn8=
-#  - COVERAGE=0.25
-#  - COVERAGE=0.30
 
-
+install:
+  - ./gradlew clean jar
 
 stages:
   -test
@@ -34,7 +37,7 @@ jobs:
     - stage: test
       after_success:
 
-        - $COVERAGE ./gradlew -p ./monolithic/ui check
+        - ./gradlew -p $BUILD_TARGET check
   #      - $COVERAGE ./gradlew -p ./monolithic/service/cart check
   #      - $COVERAGE ./gradlew -p ./monolithic/service/user check
 
@@ -42,21 +45,29 @@ jobs:
   #      - $COVERAGE ./gradlew -p ./monolithic/repository/cart check
   #      - $COVERAGE ./gradlew -p ./monolithic/repository/product check
   #      - $COVERAGE ./gradlew -p ./monolithic/repository/user check
-
-
+before_deploy:
+  - "./gradlew -p ./monolithic/ui packageToContainer ;"
+  - chmod +x "./script/deploy.sh"
 
 deploy:
   provider: script
 
-  script:
-    #- docker login --username=$DOCKER_LOGIN --password=$DOCKER_PASSWORD $DOCKER_HOST
 
-    - bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username= \"${DOCKER_LOGIN} --password-stdin ;"
+
+  script: bash "./script/deploy.sh"
 
 
   on:
-    all_branches: true
-   # condition: $TRAVIS_BRANCH =~ ^(./monolithic/ui)$
+
+    condition: "$BIULD_TARGET = './monolithic/ui'"
+    branch: master
+
+
+
+
+
+
+
 
 
 
