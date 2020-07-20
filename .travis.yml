@@ -2,7 +2,7 @@ sudo: require
 language: java
 jdk:
   - openjdk8
-  - openjdk9
+  #- openjdk9
 before_install:
   - sudo apt-get update && sudo apt-get install jd
 befor_script:
@@ -38,7 +38,7 @@ deploy:
 
   script:
 
-    - bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username=$DOCKER_LOGIN \"${DOCKER_LOGIN}\" --password-stdin=$DOCKER_PASSWORD"
+    - bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username=$DOCKER_LOGIN \"${DOCKER_LOGIN}\" --password=$DOCKER_PASSWORD"
   
   DOCKER_LOGIN:
       global:
