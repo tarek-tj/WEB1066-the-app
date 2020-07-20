@@ -59,8 +59,9 @@ deploy:
 
 
   on:
-    all_branches: true
-   # condition: "$BIULD_TARGET = ./monolithic/ui"
+
+    condition: "$BIULD_TARGET = ./monolithic/ui"
+    branch: master
 
 
 
