@@ -38,7 +38,7 @@ deploy:
 
   script:
 
-    - bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\" --password-stdin"
+    - bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username=$DOCKER_LOGIN \"${DOCKER_LOGIN}\" --password-stdin=$DOCKER_PASSWORD"
   
   DOCKER_LOGIN:
       global:
