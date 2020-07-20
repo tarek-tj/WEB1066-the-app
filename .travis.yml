@@ -52,8 +52,8 @@ deploy:
   provider: script
 
   before_deploy:
-    - ./gradlew -p ./monolithic/ui packageToContainer
-    - chmod +x ./script/deploy.sh
+    - "./gradlew -p ./monolithic/ui packageToContainer ;"
+    - chmod +x "./script/deploy.sh"
     #!/user/bin/env bash;
     #- set -e
   script:
